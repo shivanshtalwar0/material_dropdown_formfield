@@ -6,7 +6,7 @@ this plugin is improved version of [dropdown_formfield](https://github.com/cetor
 
 ## Demo
 
-<img src="https://github.com/shivanshtalwar0/dropdown_formfield/raw/master/screenshot_1.gif" width="300" />
+<img src="https://github.com/shivanshtalwar0/material_dropdown_formfield/raw/master/screenshot_1.gif" width="300" />
 
 ## Features
 
