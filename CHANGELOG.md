@@ -1,3 +1,6 @@
+## [0.1.6]-04/27/2020
+* preview updated with readme
+
 ## [0.1.4]-04/27/2020
 * added innerbackground color
 

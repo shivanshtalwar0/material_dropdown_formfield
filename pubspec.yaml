@@ -1,6 +1,6 @@
 name: material_dropdown_formfield
 description: A material dropdown form field using a dropdown button inside a form field.
-version: 0.1.4
+version: 0.1.6
 homepage: https://github.com/shivanshtalwar0/material_dropdown_formfield
 
 environment:

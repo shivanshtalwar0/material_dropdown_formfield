@@ -6,7 +6,7 @@ this plugin is improved version of [dropdown_formfield](https://github.com/cetor
 
 ## Demo
 
-<img src="https://github.com/shivanshtalwar0/material_dropdown_formfield/raw/master/screenshot_1.gif" width="300" />
+<img src="https://github.com/shivanshtalwar0/material_dropdown_formfield/raw/master/preview.gif" width="300" />
 
 ## Features
 
@@ -22,24 +22,28 @@ this plugin is improved version of [dropdown_formfield](https://github.com/cetor
 2. RoundedDropDownDecoration inherits InputDecoration
 
 ## Api and Options
-DropDownFormField
-    **Color innerBackgroundColor**:-inner background color of dropdownformfield
-    **String titleText**:-provide labelText
-    **String hintText**:-provide hint
-    **bool required**:-field required or no
-    **String errorText**:-error text
-    **dynamic value**:-initial source value
-    **List dataSource**:-list of options
-    **String textField**:-field to show text
-    **String valueField**:-field to target for value
-    **Function onChanged**:-fired when value changes
-    **bool filled**
-    **FocusNode focusNode**
-    **InputDecoration inputDecoration**:-can be OutlinedDropDownDecoration,RoundedDropDownDecoration or your own custom InputDecoration
-    **TextStyle innerTextStyle**:-inner text style of dropdown
-    **Color wedgeColor**:-dropdown wedge color
-    **Color disabledWedgeColor**:-wedge color to be shown when dropdown disabled
-    **Icon wedgeIcon**:- icon of wedge default:-(Icon(Icons.arrow_drop_down))
+
+| Option               | Type            | Description                                                                                    |
+|----------------------|-----------------|------------------------------------------------------------------------------------------------|
+| innerBackgroundColor | Color           | inner background color of dropdownformfield                                                    |
+| titleText            | String          | provide labelText                                                                              |
+| hintText             | String          | provide hint                                                                                   |
+| required             | bool            | field required or no                                                                           |
+| errorText            | String          | error text                                                                                     |
+| value                | dynamic         | initial source value                                                                           |
+| dataSource           | List            | list of options                                                                                |
+| textField            | String          | field to show text                                                                             |
+| valueField           | String          | field to target for value                                                                      |
+| onChanged            | Function        | fired when value changes                                                                       |
+| filed                | bool            |                                                                                                |
+| focusNode            | FocusNode       | provide focus node                                                                             |
+| inputDecoration      | InputDecoration | can be OutlinedDropDownDecoration,RoundedDropDownDecoration or your own custom InputDecoration |
+| innerTextStyle       | TextStyle       | inner text style of dropdown                                                                   |
+| wedgeColor           | Color           | dropdown wedge color                                                                           |
+| disabledWedgeColor   | Color           | wedge color to be shown when dropdown disabled                                                 |
+| wedgeIcon            | Icon            | icon of wedge default:-(Icon(Icons.arrow_drop_down))                                           |
+
+
 
 
 ## Example
