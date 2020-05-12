@@ -1,3 +1,9 @@
+## [0.1.8]-04/27/2020
+* validator bug fixed
+
+## [0.1.7]-04/27/2020
+* support button added
+
 ## [0.1.6]-04/27/2020
 * preview updated with readme
 

@@ -20,8 +20,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   String _myActivity;
   String _myActivityResult;
+  GlobalKey<FormState> form = GlobalKey<FormState>();
   FocusNode focusNode = FocusNode();
-  final formKey = new GlobalKey<FormState>();
   List dataSource = [
     {
       "display": "Running",
@@ -65,8 +65,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _saveForm() {
-    var form = formKey.currentState;
-    if (form.validate()) {
+//    var form = formKey.currentState;
+    if (form.currentState.validate()) {
       setState(() {
         _myActivityResult = _myActivity;
       });
@@ -81,97 +81,121 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Form(
-          key: formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                color: Colors.black,
-                padding: EdgeInsets.all(16),
-                child: DropDownFormField(
-                  innerBackgroundColor: Colors.green,
-                  wedgeIcon: Icon(Icons.keyboard_arrow_down),
-                  wedgeColor: Colors.lightBlue,
-                  innerTextStyle: TextStyle(color: Colors.white),
-                  focusNode: focusNode,
-                  inputDecoration: OutlinedDropDownDecoration(
-                      labelStyle: TextStyle(color: Colors.white),
-                      labelText: "Welcome to island",
-                      borderColor: Colors.white),
-                  hintText: 'Please choose one',
-                  value: _myActivity,
-                  onSaved: (value) {
-                    setState(() {
-                      _myActivity = value;
-                    });
-                  },
-                  onChanged: (value) {
-                    setState(() {
-                      _myActivity = value;
-                    });
-                  },
-                  dataSource: dataSource,
-                  textField: 'display',
-                  valueField: 'value',
+            key: form,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  color: Colors.black,
+                  padding: EdgeInsets.all(16),
+                  child: DropDownFormField(
+                    autovalidate: true,
+                    validator: (value) {
+                      if (value == '') {
+                        return "can't be empty";
+                      }
+                      if (value == 'Swimming') {
+                        return 'Swimming Not Allowed!';
+                      } else {
+                        return null;
+                      }
+                    },
+                    innerBackgroundColor: Colors.green,
+                    wedgeIcon: Icon(Icons.keyboard_arrow_down),
+                    wedgeColor: Colors.lightBlue,
+                    innerTextStyle: TextStyle(color: Colors.white),
+                    focusNode: focusNode,
+                    inputDecoration: OutlinedDropDownDecoration(
+                        labelStyle: TextStyle(color: Colors.white),
+                        labelText: "Welcome to island",
+                        borderColor: Colors.white),
+                    hintText: 'Please choose one',
+                    value: _myActivity,
+                    onSaved: (value) {
+                      setState(() {
+                        _myActivity = value;
+                      });
+                    },
+                    onChanged: (value) {
+                      setState(() {
+                        _myActivity = value;
+                      });
+                    },
+                    dataSource: dataSource,
+                    textField: 'display',
+                    valueField: 'value',
+                  ),
                 ),
-              ),
-              Container(
-                padding: EdgeInsets.all(16),
-                child: DropDownFormField(
-                  titleText: 'My workout',
-                  hintText: 'Please choose one',
-                  value: _myActivity,
-                  onSaved: (value) {
-                    setState(() {
-                      _myActivity = value;
-                    });
-                  },
-                  onChanged: (value) {
-                    setState(() {
-                      _myActivity = value;
-                    });
-                  },
-                  dataSource: dataSource,
-                  textField: 'display',
-                  valueField: 'value',
+                Container(
+                  padding: EdgeInsets.all(16),
+                  child: DropDownFormField(
+                    titleText: 'My workout',
+                    hintText: 'Please choose one',
+                    validator: (value) {
+                      if (value == 'Swimming') {
+                        return 'Swimming Not Allowed!';
+                      } else {
+                        return null;
+                      }
+                    },
+                    value: _myActivity,
+                    onSaved: (value) {
+                      setState(() {
+                        _myActivity = value;
+                      });
+                    },
+                    onChanged: (value) {
+                      setState(() {
+                        _myActivity = value;
+                      });
+                    },
+                    dataSource: dataSource,
+                    textField: 'display',
+                    valueField: 'value',
+                  ),
                 ),
-              ),
-              Container(
-                padding: EdgeInsets.all(16),
-                child: DropDownFormField(
-                  inputDecoration:
-                      RoundedDropDownDecoration(labelText: "Welcome to island"),
-                  hintText: 'Please choose one',
-                  value: _myActivity,
-                  onSaved: (value) {
-                    setState(() {
-                      _myActivity = value;
-                    });
-                  },
-                  onChanged: (value) {
-                    setState(() {
-                      _myActivity = value;
-                    });
-                  },
-                  dataSource: dataSource,
-                  textField: 'display',
-                  valueField: 'value',
+                Container(
+                  padding: EdgeInsets.all(16),
+                  child: DropDownFormField(
+                    inputDecoration: RoundedDropDownDecoration(
+                        labelText: "Welcome to island"),
+                    hintText: 'Please choose one',
+                    value: _myActivity,
+                    validator: (value) {
+                      if (value == 'Swimming') {
+                        return 'Swimming Not Allowed!';
+                      } else {
+                        return null;
+                      }
+                    },
+                    onSaved: (value) {
+                      setState(() {
+                        _myActivity = value;
+                      });
+                    },
+                    onChanged: (value) {
+                      setState(() {
+                        _myActivity = value;
+                      });
+                    },
+                    dataSource: dataSource,
+                    textField: 'display',
+                    valueField: 'value',
+                  ),
                 ),
-              ),
-              Container(
-                padding: EdgeInsets.all(8),
-                child: RaisedButton(
-                  child: Text('Save'),
-                  onPressed: _saveForm,
+                Container(
+                  padding: EdgeInsets.all(8),
+                  child: RaisedButton(
+                    child: Text('Save'),
+                    onPressed: _saveForm,
+                  ),
                 ),
-              ),
-              Container(
-                padding: EdgeInsets.all(16),
-                child: Text(_myActivityResult),
-              )
-            ],
-          ),
-        ),
+                Container(
+                  padding: EdgeInsets.all(16),
+                  child: Text(_myActivityResult),
+                )
+              ],
+            )),
       ),
     );
   }

@@ -154,6 +154,7 @@ class DropDownFormField extends FormField<dynamic> {
                               value: value == '' ? null : value,
                               onChanged: (dynamic newValue) {
                                 state.didChange(newValue);
+                                validator(newValue);
                                 onChanged(newValue);
                               },
                               items: dataSource.map((item) {
