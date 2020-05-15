@@ -1,9 +1,10 @@
-[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/U7U11OZL8)
+### This plugin is not maintained anymore, so its use is not recommended
+since in latest flutter update this plugin was already introduced, So there's no point maintaining this plugin. Kindly refer
+[DropDownButtonFormField](https://api.flutter.dev/flutter/material/DropdownButtonFormField-class.html)
 
-# Material Dropdown form field
-
-A material dropdown form field using a dropdown button inside a form field.
+ # Material Dropdown form fieldA material dropdown form field using a dropdown button inside a form field.
 this plugin is improved version of [dropdown_formfield](https://github.com/cetorres/dropdown_formfield) plugin originally developed by [cetorres](https://github.com/cetorres)
+
 
 ## Demo
 

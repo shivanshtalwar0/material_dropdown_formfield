@@ -18,59 +18,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _myActivity;
-  String _myActivityResult;
+  int _myActivity;
   GlobalKey<FormState> form = GlobalKey<FormState>();
   FocusNode focusNode = FocusNode();
-  List dataSource = [
-    {
-      "display": "Running",
-      "value": "Running",
-    },
-    {
-      "display": "Climbing",
-      "value": "Climbing",
-    },
-    {
-      "display": "Walking",
-      "value": "Walking",
-    },
-    {
-      "display": "Swimming",
-      "value": "Swimming",
-    },
-    {
-      "display": "Soccer Practice",
-      "value": "Soccer Practice",
-    },
-    {
-      "display": "Baseball Practice",
-      "value": "Baseball Practice",
-    },
-    {
-      "display": "Football Practice",
-      "value": "Football Practice",
-    },
+  List<DropdownMenuItem<int>> dataSource = [
+    DropdownMenuItem<int>(
+        value: 1, child: Container(child: Text("Abc", style: TextStyle())))
   ];
 
   @override
   void initState() {
     super.initState();
-    _myActivity = '';
-    _myActivityResult = '';
+    _myActivity = null;
     focusNode.addListener(() {
       focusNode.unfocus(disposition: UnfocusDisposition.previouslyFocusedChild);
-//      focusNode.
     });
-  }
-
-  _saveForm() {
-//    var form = formKey.currentState;
-    if (form.currentState.validate()) {
-      setState(() {
-        _myActivityResult = _myActivity;
-      });
-    }
   }
 
   @override
@@ -86,114 +48,53 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Container(
-                  color: Colors.black,
                   padding: EdgeInsets.all(16),
-                  child: DropDownFormField(
-                    autovalidate: true,
-                    validator: (value) {
-                      if (value == '') {
-                        return "can't be empty";
-                      }
-                      if (value == 'Swimming') {
-                        return 'Swimming Not Allowed!';
-                      } else {
-                        return null;
-                      }
-                    },
-                    innerBackgroundColor: Colors.green,
-                    wedgeIcon: Icon(Icons.keyboard_arrow_down),
-                    wedgeColor: Colors.lightBlue,
-                    innerTextStyle: TextStyle(color: Colors.white),
-                    focusNode: focusNode,
-                    inputDecoration: OutlinedDropDownDecoration(
-                        labelStyle: TextStyle(color: Colors.white),
-                        labelText: "Welcome to island",
-                        borderColor: Colors.white),
-                    hintText: 'Please choose one',
-                    value: _myActivity,
-                    onSaved: (value) {
-                      setState(() {
-                        _myActivity = value;
-                      });
-                    },
-                    onChanged: (value) {
-                      setState(() {
-                        _myActivity = value;
-                      });
-                    },
-                    dataSource: dataSource,
-                    textField: 'display',
-                    valueField: 'value',
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(16),
-                  child: DropDownFormField(
-                    titleText: 'My workout',
-                    hintText: 'Please choose one',
-                    validator: (value) {
-                      if (value == 'Swimming') {
-                        return 'Swimming Not Allowed!';
-                      } else {
-                        return null;
-                      }
-                    },
-                    value: _myActivity,
-                    onSaved: (value) {
-                      setState(() {
-                        _myActivity = value;
-                      });
-                    },
-                    onChanged: (value) {
-                      setState(() {
-                        _myActivity = value;
-                      });
-                    },
-                    dataSource: dataSource,
-                    textField: 'display',
-                    valueField: 'value',
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(16),
-                  child: DropDownFormField(
-                    inputDecoration: RoundedDropDownDecoration(
+                  child: DropdownButtonFormField(
+                    decoration: RoundedDropDownDecoration(
                         labelText: "Welcome to island"),
-                    hintText: 'Please choose one',
                     value: _myActivity,
+                    onSaved: (value) {
+                      print("from saved" + value.toString());
+                    },
                     validator: (value) {
-                      if (value == 'Swimming') {
+                      print('in validator ' + value.toString());
+                      if (value == 1) {
                         return 'Swimming Not Allowed!';
                       } else {
                         return null;
                       }
                     },
-                    onSaved: (value) {
-                      setState(() {
-                        _myActivity = value;
-                      });
-                    },
                     onChanged: (value) {
+                      print("onchanged " + value.toString());
                       setState(() {
                         _myActivity = value;
                       });
                     },
-                    dataSource: dataSource,
-                    textField: 'display',
-                    valueField: 'value',
+                    items: dataSource,
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.all(8),
-                  child: RaisedButton(
-                    child: Text('Save'),
-                    onPressed: _saveForm,
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(16),
-                  child: Text(_myActivityResult),
-                )
+                    padding: EdgeInsets.all(8),
+                    child: Column(
+                      children: <Widget>[
+                        RaisedButton(
+                          child: Text('Save form'),
+                          onPressed: () {
+                            form.currentState.validate();
+                            form.currentState.save();
+                          },
+                        ),
+                        RaisedButton(
+                          child: Text('change to 1'),
+                          onPressed: () {
+                            setState(() {
+                              _myActivity = 1;
+                            });
+                            form.currentState.validate();
+                          },
+                        ),
+                      ],
+                    )),
               ],
             )),
       ),
