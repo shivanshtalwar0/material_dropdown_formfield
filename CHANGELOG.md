@@ -1,3 +1,6 @@
+## [0.1.9]-04/27/2020
+* plugin discontinued please refer [DropDownButtonFormField](https://api.flutter.dev/flutter/material/DropdownButtonFormField-class.html)
+
 ## [0.1.8]-04/27/2020
 * validator bug fixed
 
